@@ -98,3 +98,43 @@ float perlinNoise(float x, float y) //  actual cordinates of the point
 
 
 }
+
+int main() {
+
+    InitWindow(screenWidth, screenHeight, "perlin Noise");
+
+    //SetTargetFPS(60); // Set our game to run at 60 frames-per-second
+
+    // Main game loop
+    while (!WindowShouldClose()) // Detect window close button or ESC key
+    {
+        
+        BeginDrawing();
+
+       
+
+        for (int x = 0; x < screenWidth; x++) {
+            for (int y = 0; y < screenHeight; y++) 
+            {
+
+               
+                float val = perlinNoise(30.0f * x / screenWidth, 30.0f * y / screenHeight);
+        
+                    Color color = { (unsigned char)(255 * val), (unsigned char)(255 * val), (unsigned char)(255 * val), 255 };
+                    DrawPixel(x, y, color);
+                
+                
+            }
+        }
+        
+
+        EndDrawing();
+    }
+
+    
+    CloseWindow(); // Close window and OpenGL context
+   
+
+
+    return 0;
+}
